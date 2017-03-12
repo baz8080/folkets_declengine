@@ -1,5 +1,5 @@
-import com.mbcdev.folkets.declension.SaldoNounDeclension;
-import com.mbcdev.folkets.declension.SaldoService;
+import com.mbcdev.folkets.declengine.SaldoNounDeclension;
+import com.mbcdev.folkets.declengine.SaldoService;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;

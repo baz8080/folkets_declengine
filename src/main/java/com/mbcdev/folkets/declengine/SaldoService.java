@@ -1,4 +1,4 @@
-package com.mbcdev.folkets.declension;
+package com.mbcdev.folkets.declengine;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

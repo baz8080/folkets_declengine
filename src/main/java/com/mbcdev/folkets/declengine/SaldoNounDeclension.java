@@ -1,7 +1,7 @@
-package com.mbcdev.folkets.declension;
+package com.mbcdev.folkets.declengine;
 
 /**
- * Model for a Saldo noun declension
+ * Model for a Saldo noun declengine
  *
  * Created by barry on 12/03/2017.
  */
