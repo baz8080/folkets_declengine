@@ -34,15 +34,17 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-        generateNounDeclensionSources();
+        generateNounDeclensionSources(args[0]);
     }
 
-    private static void generateNounDeclensionSources() throws Exception {
+    private static void generateNounDeclensionSources(String nounsList) throws Exception {
+
+        nounsList = nounsList == null ? "src/main/resources/noun_paradigms.txt" : nounsList;
 
         SaldoService saldoService = getService();
 
         BufferedReader bufferedReader =
-                new BufferedReader(new FileReader("src/main/resources/noun_paradigms.txt"));
+                new BufferedReader(new FileReader(nounsList));
         String paradigm;
 
         TypeSpec.Builder factoryBuilder = TypeSpec.classBuilder("NounDeclensionFactory")
