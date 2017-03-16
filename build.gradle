@@ -1,5 +1,5 @@
 group 'com.mbcdev.folkets'
-version '1.0-SNAPSHOT'
+version '0.1'
 
 apply plugin: 'java'
 
@@ -16,6 +16,15 @@ sourceSets {
 
 task generateSources(type: JavaExec, dependsOn: 'classes') {
     main 'com.mbcdev.folkets.declengine.Main'
+
+    def travisTag = "$System.env.TRAVIS_TAG"
+    def nounsList = (travisTag == "null" || travisTag == "")
+        ? "src/main/resources/noun_paradigms.txt"
+        : "src/main/resources/noun_paradigms_all.txt"
+
+    println "Using ${nounsList}"
+    args nounsList
+
     classpath sourceSets.main.runtimeClasspath
 }
 
