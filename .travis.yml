@@ -2,4 +2,13 @@ language: java
 jdk:
 - oraclejdk8
 script:
-- ./gradlew clean assemble
+- ./gradlew clean generateSources genJar
+deploy:
+  provider: releases
+  api_key:
+    secure: uZFCKw3dmtfXi3eUhL291Hi4tuYSRUuoa+5T7V/At+XKJCZHGcCD0jTq9vfdUx1QmLruxnu8K5nWFMAE87PB0FFm7YMmlzesUbHxXesQCIYkfRtWj5KhCgrBaowXyLODrDbMWCg3m+bGd4nHZaKJpRZamtF+urZgHcReAXnOSd7xDUQDK88B61y2IA+qBXjCI/wRgctIYp0YWUd/smthihDwzk6jBDNTiFjpSUNDbcrfdNgv98cpSXCkMq4/VoVGDzv8pEdm1iForXFzXkXVOIIqJGtZfz0Bw/Qh5mwGLQ0EiLhcgRoo7at17RlQQ6KahaD1Cz7KHKmb2CxeIcJbDdKBPiXDaHKjOetlXSL3zHUT0zRWCY8+ozjUhdi7oB9wkh3Q8TfJVxx5vE/Q6tyj+kdBxn9V66dnYFOtoJngimgawjC13iNk26jeRQKyVJAdGGUlV6/De17k8Pi+VAIiNa4ftkRYKvxXOOLnkm1K/O2Wl7W8M1NkkWJPKSibPIdpy86GZDhNd2DWdqOX4TAzOHIK+5HME3bWXhuqI6PWBcdF00m+nfgNt1tjgyNPtawH20+Jm1AbExZGIZKQqHNNjXtUoySHLKda0pvsPO8+X0JE2K7oRbTEs9wlYrCcy9myWfVZtyuh0XRbdAJJ0HIHBIkgyofwoXR5tLGksr0L1tk=
+  file_glob: true
+  file: build/libs/*
+  on:
+    tags: true
+    repo: baz8080/folkets_declengine
