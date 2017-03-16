@@ -9,7 +9,31 @@ repositories {
     mavenCentral()
 }
 
+sourceSets {
+    main
+    gen
+}
+
+task generateSources(type: JavaExec, dependsOn: 'classes') {
+    main 'com.mbcdev.folkets.declengine.Main'
+    classpath sourceSets.main.runtimeClasspath
+}
+
+task genJar (type: Jar) {
+    from(sourceSets.gen.output) {
+        include '**/*.class'
+    }
+}
+
+task cleanGenerated << {
+    //noinspection GroovyAssignabilityCheck
+    delete sourceSets.gen.allSource
+}
+clean.dependsOn cleanGenerated
+
 dependencies {
+    compile fileTree(dir: 'lib', include: '*.jar')
+
     compile 'com.squareup:javapoet:1.8.0'
 
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
